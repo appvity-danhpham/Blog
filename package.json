@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/appvity-danhpham/Blog/issues"
   },
-  "homepage": "https://github.com/appvity-danhpham/Blog#readme"
+  "homepage": "https://github.com/appvity-danhpham/Blog#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }

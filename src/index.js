@@ -4,7 +4,14 @@ const app = express();
 const port = 3000;
 const path = require('path');
 
+const route = require('./routes/index.route');
+
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use(express.urlencoded({
+  extended: true
+}));
+app.use(express.json());
 
 app.engine('hbs', exphbs({
   extname: '.hbs'
@@ -12,13 +19,7 @@ app.engine('hbs', exphbs({
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources/views'));
 
-app.get('/', function (req, res) {
-  res.render('home');
-});
-
-app.get('/news', function (req, res) {
-  res.render('news');
-});
+route(app);
  
 app.listen(port, () => {
     console.log(`Listening on http://localhost:${port}`);

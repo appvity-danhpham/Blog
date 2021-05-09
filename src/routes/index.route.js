@@ -1,19 +1,10 @@
-const noteRouter = require('./note.route');
+const favouriteRouter = require('./favourite.route');
 
 function route(app) {
-    app.use('/note', noteRouter);
+    app.use('/favourite', favouriteRouter);
 
-    app.get('/', function (req, res) {
+    app.use('/', function (req, res) {
         res.render('home');
-    });
-
-    app.get('/search', function (req, res) {
-        res.render('search');
-    });
-
-    app.post('/search', function (req, res) {
-        console.log(req.body);
-        res.render('search');
     });
 }
 

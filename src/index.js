@@ -3,6 +3,9 @@ const exphbs  = require('express-handlebars');
 const app = express();
 const port = 3000;
 const path = require('path');
+const db = require('./config/db/connect');
+
+db.connect();
 
 const route = require('./routes/index.route');
 
@@ -17,7 +20,7 @@ app.engine('hbs', exphbs({
   extname: '.hbs'
 }));
 app.set('view engine', 'hbs');
-app.set('views', path.join(__dirname, 'resources/views'));
+app.set('views', path.join(__dirname, 'views'));
 
 route(app);
  

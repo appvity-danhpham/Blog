@@ -5,6 +5,8 @@ const favouriteController = require('../controllers/FavouriteController');
 
 router.post('/store', favouriteController.store);
 router.get('/create', favouriteController.create);
+router.get('/:id/edit', favouriteController.edit);
+router.patch('/:id', favouriteController.update);
 router.get('/:slug', favouriteController.show);
 router.get('/', favouriteController.index);
 

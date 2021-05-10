@@ -1,5 +1,5 @@
 const Favourite = require('../models/Favourite');
-const { mutipleMongooseToOject } = require('../util/mongoose');
+const { mutipleMongooseToOject, mongooseToOject } = require('../util/mongoose');
 
 class FavouriteController {
 
@@ -15,8 +15,27 @@ class FavouriteController {
     }
 
     // [GET] /favourite/:slug
-    show(req, res) {
-        res.send('favourite detail');
+    show(req, res, next) {
+        Favourite.findOne({ slug: req.params.slug })
+        .then(favourite => res.render('favourite-show', {
+            favourite: mongooseToOject(favourite)
+        }))
+        .catch(next);
+    }
+
+    // [GET] /favourite/create
+    create(req, res, next) {
+        res.render('favourite-create')
+    }
+
+    // [POST] /favourite/store
+    store(req, res, next) {
+        const formDate = new Favourite(req.body);
+        formDate.image = `https://img.youtube.com/vi/${req.body.videoId}/sddefault.jpg`;
+        const favourite = new Favourite(formDate);
+        favourite.save()
+        .then(() => res.redirect(`/favourite/${favourite.slug}`))
+        .catch(next);
     }
 }
 

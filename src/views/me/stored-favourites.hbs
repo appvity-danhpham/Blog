@@ -1,0 +1,24 @@
+<div class="mt-4">
+    <h3>My Favourite</h3>
+
+    <table class="table mt-4">
+        <thead>
+            <tr>
+                <th scope="col">index</th>
+                <th scope="col">Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Created</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each favourites}}
+            <tr>
+                <th scope="row">{{sum @index 1}}</th>
+                <td>{{this.name}}</td>
+                <td>{{this.description}}</td>
+                <td>{{this.createdAt}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

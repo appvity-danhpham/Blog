@@ -17,7 +17,10 @@ app.use(express.urlencoded({
 app.use(express.json());
 
 app.engine('hbs', exphbs({
-  extname: '.hbs'
+  extname: '.hbs',
+  helpers: {
+    sum: (a, b) => a + b,
+  }
 }));
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'views'));

@@ -5,11 +5,15 @@
 
         <div class="col-sm-6 col-lg-4">
             <div class="card">
-                <img src="{{this.image}}" class="card-img-top" alt="image">
+                <a href="/favourite/{{this.slug}}">
+                    <img src="{{this.image}}" class="card-img-top" alt="image">
+                </a>
                 <div class="card-body">
-                    <h5 class="card-title">{{this.name}}</h5>
+                    <a href="/favourite/{{this.slug}}">
+                        <h5 class="card-title">{{this.name}}</h5>
+                    </a>
                     <p class="card-text">{{this.description}}</p>
-                    <a href="#" class="btn btn-primary">View</a>
+                    <a href="/favourite/{{this.slug}}" class="btn btn-primary">View</a>
                 </div>
             </div>
         </div>

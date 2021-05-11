@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const slug = require('mongoose-slug-generator');
+const mongoose_delete = require('mongoose-delete');
 const Schema = mongoose.Schema;
-mongoose.plugin(slug);
 
 const Favourite = new Schema({
   name: { type: String },
@@ -13,6 +13,12 @@ const Favourite = new Schema({
   updatedAt: { type: Date, default: Date.now},
 }, {
   timestamps: true
+});
+
+mongoose.plugin(slug);
+Favourite.plugin(mongoose_delete, { 
+  deletedAt: true,
+  overrideMethods: 'all' 
 });
 
 module.exports = mongoose.model('Favourite', Favourite);

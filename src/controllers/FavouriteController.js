@@ -47,7 +47,7 @@ class FavouriteController {
 
     // [DELETE] /favourite/:id
     delete(req, res, next) {
-        Favourite.deleteOne({ _id: req.params.id })
+        Favourite.delete({ _id: req.params.id })
             .then(() => res.redirect('/me/stored/favourites'))
             .catch(next);
     }

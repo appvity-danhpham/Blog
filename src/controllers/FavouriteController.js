@@ -45,6 +45,13 @@ class FavouriteController {
             .catch(next);
     }
 
+    // [DELETE] /favourite/:id
+    delete(req, res, next) {
+        Favourite.deleteOne({ _id: req.params.id })
+            .then(() => res.redirect('/me/stored/favourites'))
+            .catch(next);
+    }
+
     // [POST] /favourite/store
     store(req, res, next) {
         const formDate = new Favourite(req.body);

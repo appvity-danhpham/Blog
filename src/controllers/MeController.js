@@ -11,6 +11,16 @@ class MeController {
         }))
         .catch(next);
     }
+
+    // [GET] /me/trash/favourites
+    trashFavourite(req, res, next) {
+        Favourite.findDeleted({})
+        .then(favourites => res.render('me/trash-favourites', {
+            favourites: mutipleMongooseToOject(favourites)
+        }))
+        .catch(next);
+    }
+    
 }
 
 module.exports = new MeController;

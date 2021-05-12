@@ -1,6 +1,7 @@
 <div class="mt-4">
   <h3>My Favourite</h3>
   <a href="/favourite/create" class="btn btn-primary">Create</a>
+  <a href="/me/trash/favourites">Trash</a>
 
   <table class="table mt-4">
     <thead>
@@ -22,6 +23,10 @@
           <a href="/favourite/{{this._id}}/edit" class="btn btn-link">Edit</a>
           <a href="" class="btn btn-link" data-id="{{this._id}}" data-bs-toggle="modal" data-bs-target="#delete-favourite-modal">Delete</a>
         </td>
+      </tr>
+      {{else}}
+      <tr>
+        <td colspan="5" class="text-center">You have't created the favourite. <a href="/favourite/create">Create Favourite</a></td>
       </tr>
       {{/each}}
     </tbody>
